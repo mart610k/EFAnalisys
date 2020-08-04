@@ -19,36 +19,45 @@ namespace CocktailEntityFramework
 
             using (IngredientContext ctx = new IngredientContext())
             {
-                //IngredientBase ingredient = ;
-                //ctx.IngredientBase.Add(ingredient);
-                //ctx.SaveChanges();
-                //ctx.AddIngridientBase(new Liqour("Vodka", 37.5f));
-                List<IIngredient> mixers = ctx.LoadAlcoholics();
-                //mixers.AddRange(ctx.LoadMixers());
-                for (int i = 0; i < mixers.Count; i++)
-                {
-                    Console.WriteLine(mixers[i].IngredientID);
-                    Console.WriteLine(mixers[i].Name);
-                    if (mixers[i] is IAlcholic)
-                    {
-                        Console.WriteLine(((IAlcholic)mixers[i]).Percentage);
-                    }
-                }
-                //Database.SetInitializer(new MigrateDatabaseToLatestVersion<IngredientContext, EF6Console.Migrations.Configuration>());
-                //Liqour ingredient = new Liqour("Vodka",37.5f);
-                //ctx.Liqour.Add(ingredient);
-                //ctx.SaveChanges();
+                
 
-                //Liqour ingredient = new Liqour("Vodka", 37.5f);
-                //ctx.Liqour.Add(ingredient);
-                //ctx.SaveChanges();
-                //ctx.AddIngridientBase(new Liqour("Gin", 40f));
+                List<IIngredient> ingredients = ctx.LoadEverything();
+                for (int i = 0; i < ingredients.Count; i++)
+                {
+                    Console.Write(ingredients[i].IngredientID + "|");
+                    Console.Write(ingredients[i].Name + "|");
+                    if (ingredients[i] is IAlcholic)
+                    {
+                        Console.Write(((IAlcholic)ingredients[i]).Percentage + "%");
+                    }
+                    else
+                    {
+                        Console.Write("N/A");
+                    }
+                    Console.WriteLine("|");
+                }
+                
 
             }
             Console.WriteLine("Uploded data to Database");
             Console.ReadKey();
         }
 
-       
+       static void AddDatabaseEntries()
+        {
+            using (IngredientContext ctx = new IngredientContext())
+            {
+                ctx.AddIngridientBase(new Liqour("Vodka", 37.5f));
+                ctx.AddIngridientBase(new Liqour("Whisky", 40f));
+                ctx.AddIngridientBase(new Mixer("Apple Juice"));
+                ctx.AddIngridientBase(new Mixer("Mango Juice"));
+                ctx.AddIngridientBase(new Mixer("Orange Juice"));
+                ctx.AddIngridientBase(new Accessory("Ice cube"));
+                ctx.AddIngridientBase(new Accessory("Straw"));
+                ctx.AddIngridientBase(new Accessory("Melon"));
+                ctx.AddIngridientBase(new Accessory("Olive"));
+                ctx.AddIngridientBase(new Liqour("Gin", 40f));
+            }
+        }
     }
 }
