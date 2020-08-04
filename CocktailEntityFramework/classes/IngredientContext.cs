@@ -13,21 +13,17 @@ namespace CocktailEntityFramework.classes
 
         public IngredientContext() : base()
         {
-
         }
 
         public DbSet<Mixer> Mixer { get; set; }
-        
+       
         public DbSet<Liqour> Liqour { get; set; }
 
         public DbSet<Accessory> Accessory { get; set; }
 
+        public DbSet<IngredientBase> IngredientBase { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            Database.SetInitializer<IngredientContext>(null);
-            base.OnModelCreating(modelBuilder);
-        }
+
 
         public bool AddMixer(Mixer mixerToAdd)
         {
@@ -41,17 +37,46 @@ namespace CocktailEntityFramework.classes
             {
                 Console.WriteLine(e.Message);
                 return false;
-                
+
             }
         }
-        public List<IIngredient> LoadMixer()
+
+        public bool AddIngridientBase(IngredientBase basei)
         {
-            List<IIngredient> mixers;
-            mixers = new List<IIngredient>(from b in Mixer select b);
-            return mixers;
+            try
+            {
+                IngredientBase.Add(basei);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+
+            }
         }
 
-        
+        public List<Mixer> LoadMixers()
+        {
+            var mixer = Mixer.Where(s => s.IngredientID != -1);
+            List<Mixer> list = mixer.ToList<Mixer>();
+            return list;
+        }
+
+        public List<Liqour> LoadAlcoholics()
+        {
+            var liquour = Liqour.Where(s => s.IngredientID != -1);
+            List<Liqour> list = liquour.ToList<Liqour>();
+            return list;
+        }
+        public List<Accessory> LoadAccessories()
+        {
+            var accessory = Accessory.Where(s => s.IngredientID != -1);
+            List<Accessory> list = accessory.ToList<Accessory>();
+            return list;
+        }
+
 
     }
 
