@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CocktailEntityFramework.classes
 {
     [Table("Liquor")]
-    class Liqour : IngredientBase///, IAlcholic
+    class Liqour : IngredientBase, IAlcholic
     {
         public float Percentage { get; set; }
 

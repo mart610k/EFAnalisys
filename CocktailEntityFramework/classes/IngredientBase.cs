@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace CocktailEntityFramework.classes
 {
     //[Table("IngredientBase")]
-    abstract class IngredientBase : Entity//, IIngredient
+    abstract class IngredientBase : Entity, IIngredient
     {
         
         public string Name { get; set; }

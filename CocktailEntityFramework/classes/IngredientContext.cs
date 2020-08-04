@@ -57,23 +57,25 @@ namespace CocktailEntityFramework.classes
             }
         }
 
-        public List<Mixer> LoadMixers()
+
+
+        public List<IIngredient> LoadMixers()
         {
             var mixer = Mixer.Where(s => s.IngredientID != -1);
-            List<Mixer> list = mixer.ToList<Mixer>();
+            List<IIngredient> list = mixer.ToList<IIngredient>();
             return list;
         }
 
-        public List<Liqour> LoadAlcoholics()
+        public List<IIngredient> LoadAlcoholics()
         {
             var liquour = Liqour.Where(s => s.IngredientID != -1);
-            List<Liqour> list = liquour.ToList<Liqour>();
+            List<IIngredient> list = liquour.ToList<IIngredient>();
             return list;
         }
-        public List<Accessory> LoadAccessories()
+        public List<IIngredient> LoadAccessories()
         {
             var accessory = Accessory.Where(s => s.IngredientID != -1);
-            List<Accessory> list = accessory.ToList<Accessory>();
+            List<IIngredient> list = accessory.ToList<IIngredient>();
             return list;
         }
 

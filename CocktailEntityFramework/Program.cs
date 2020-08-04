@@ -23,7 +23,7 @@ namespace CocktailEntityFramework
                 //ctx.IngredientBase.Add(ingredient);
                 //ctx.SaveChanges();
                 //ctx.AddIngridientBase(new Liqour("Vodka", 37.5f));
-                List<Liqour> mixers = ctx.LoadAlcoholics();
+                List<IIngredient> mixers = ctx.LoadAlcoholics();
                 //mixers.AddRange(ctx.LoadMixers());
                 for (int i = 0; i < mixers.Count; i++)
                 {
