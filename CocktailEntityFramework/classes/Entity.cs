@@ -1,16 +1,16 @@
-﻿using System;
+﻿using CocktailEntityFramework.interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CocktailEntityFramework.interfaces
+namespace CocktailEntityFramework.classes
 {
-    interface IIngredient
+    abstract class Entity 
     {
         [Key]
-        int IngredientID { get; set; }
-        string Name { get; set; }
+        public int IngredientID { get; set; }
     }
 }
