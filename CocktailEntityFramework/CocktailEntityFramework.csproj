@@ -56,9 +56,11 @@
     <Compile Include="classes\Accessory.cs" />
     <Compile Include="classes\Entity.cs" />
     <Compile Include="classes\IngredientBase.cs" />
+    <Compile Include="classes\IngredientContent.cs" />
     <Compile Include="classes\IngredientContext.cs" />
     <Compile Include="classes\Liqour.cs" />
     <Compile Include="classes\Mixer.cs" />
+    <Compile Include="classes\Recipe.cs" />
     <Compile Include="enums\UnitType.cs" />
     <Compile Include="interfaces\IAlcholic.cs" />
     <Compile Include="interfaces\IIngredient.cs" />

@@ -9,6 +9,11 @@ namespace CocktailEntityFramework
     {
         static void Main(string[] args)
         {
+            //IRecipe recipe = new Recipe("Mix Test");
+            //recipe.AddIngredientContent(new Ingre)
+
+
+
             using (IngredientContext ctx = new IngredientContext())
             {
                 List<IIngredient> ingredients = ctx.LoadEverything();
@@ -45,6 +50,10 @@ namespace CocktailEntityFramework
                 ctx.AddIngridientBase(new Accessory("Melon"));
                 ctx.AddIngridientBase(new Accessory("Olive"));
                 ctx.AddIngridientBase(new Liqour("Gin", 40f));
+
+                ctx.AddIngridientBase(new Mixer("Sprite"));
+                ctx.AddIngridientBase(new Mixer("Lime Juice"));
+                ctx.AddIngridientBase(new Mixer("Cranberry Juice"));
             }
        }
     }
