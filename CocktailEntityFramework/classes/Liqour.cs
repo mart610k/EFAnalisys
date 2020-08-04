@@ -9,7 +9,7 @@ namespace CocktailEntityFramework.classes
 {
     class Liqour : IngredientBase, IAlcholic
     {
-        public float Percentage { get; private set; }
+        public float Percentage { get; set; }
 
         public Liqour(string name, float alcPercentage) : base(name)
         {

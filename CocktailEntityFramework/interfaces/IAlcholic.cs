@@ -8,6 +8,6 @@ namespace CocktailEntityFramework.interfaces
 {
     interface IAlcholic
     {
-        float Percentage { get; }
+        float Percentage { get; set; }
     }
 }

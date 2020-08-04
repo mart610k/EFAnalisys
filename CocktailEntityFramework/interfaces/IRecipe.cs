@@ -8,9 +8,10 @@ namespace CocktailEntityFramework.interfaces
 {
     interface IRecipe
     {
-        string Name { get; }
+        int RecipeID { get; set; }
+        string Name { get; set; }
 
-        List<IIngredientContent> IngredientContents { get; }
+        List<IIngredientContent> IngredientContents { get; set;}
 
 
         bool AddIngredientContent(IIngredientContent ingredientContent);
