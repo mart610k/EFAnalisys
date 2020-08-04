@@ -1,11 +1,6 @@
 ﻿using CocktailEntityFramework.classes;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity.Migrations;
 using CocktailEntityFramework.interfaces;
 
 namespace CocktailEntityFramework
@@ -14,13 +9,8 @@ namespace CocktailEntityFramework
     {
         static void Main(string[] args)
         {
-           
-
-
             using (IngredientContext ctx = new IngredientContext())
             {
-                
-
                 List<IIngredient> ingredients = ctx.LoadEverything();
                 for (int i = 0; i < ingredients.Count; i++)
                 {
@@ -36,15 +26,13 @@ namespace CocktailEntityFramework
                     }
                     Console.WriteLine("|");
                 }
-                
-
             }
             Console.WriteLine("Uploded data to Database");
             Console.ReadKey();
         }
 
        static void AddDatabaseEntries()
-        {
+       {
             using (IngredientContext ctx = new IngredientContext())
             {
                 ctx.AddIngridientBase(new Liqour("Vodka", 37.5f));
@@ -58,6 +46,6 @@ namespace CocktailEntityFramework
                 ctx.AddIngridientBase(new Accessory("Olive"));
                 ctx.AddIngridientBase(new Liqour("Gin", 40f));
             }
-        }
+       }
     }
 }
