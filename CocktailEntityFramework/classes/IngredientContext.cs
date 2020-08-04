@@ -57,7 +57,14 @@ namespace CocktailEntityFramework.classes
             }
         }
 
-
+        public List<IIngredient> LoadEverything()
+        {
+            List<IIngredient> ingredients = new List<IIngredient>();
+            ingredients.AddRange(LoadMixers());
+            ingredients.AddRange(LoadAlcoholics());
+            ingredients.AddRange(LoadAccessories());
+            return ingredients;
+        }
 
         public List<IIngredient> LoadMixers()
         {
