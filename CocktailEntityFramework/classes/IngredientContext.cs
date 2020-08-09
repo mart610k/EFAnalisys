@@ -15,9 +15,9 @@ namespace CocktailEntityFramework.classes
         {
         }
 
-        public DbSet<IngredientContent> IngredientContent { get;private set; }
+        public DbSet<IngredientContent> IngredientContent { get; set; }
 
-        public DbSet<IngredientBase> IngredientBase { get;private set; }
+        public DbSet<IngredientBase> IngredientBase { get; set; }
 
         public DbSet<Recipe> Recipe { get; set; }
 
