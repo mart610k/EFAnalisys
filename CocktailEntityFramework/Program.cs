@@ -2,6 +2,8 @@ using CocktailEntityFramework.classes;
 using System;
 using System.Collections.Generic;
 using CocktailEntityFramework.interfaces;
+using System.Linq;
+using System.Data.Entity;
 
 namespace CocktailEntityFramework
 {
