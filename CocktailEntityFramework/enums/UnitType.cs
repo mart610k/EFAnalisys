@@ -10,6 +10,7 @@ namespace CocktailEntityFramework.enums
     {
         ml,
         dash,
-        piece
+        piece,
+        slice
     }
 }
