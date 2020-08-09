@@ -9,17 +9,33 @@ namespace CocktailEntityFramework
     {
         static void Main(string[] args)
         {
-            //IRecipe recipe = new Recipe("Mix Test");
-            //recipe.AddIngredientContent(new Ingre)
 
-
+            AddIngredients();
+            AddDrinks();
 
             using (IngredientContext ctx = new IngredientContext())
             {
-                List<IIngredient> ingredients = ctx.LoadEverything();
+
+                //src: https://stackoverflow.com/questions/10822656/entity-framework-include-multiple-levels-of-properties 
+                //Had problems with selecting on further levels. down to Ingredient
+                List<Recipe> recipes = new List<Recipe>(ctx.Recipe.Include(x => x.IngredientContents.Select(y => y.Ingredient)));
+
+                for (int i = 0; i < recipes.Count; i++)
+                {
+                    Console.WriteLine(recipes[i].IngredientContents.Count);
+                    Console.WriteLine(recipes[i].HaveAlcoholContent());
+                    for (int j = 0; j < recipes[i].IngredientContents.Count; j++)
+                    {
+                        Console.WriteLine(recipes[i].IngredientContents[j].UnitType);
+                    }
+                }
+            }
+
+            using (IngredientContext ctx = new IngredientContext())
+            {
+                List<IIngredient> ingredients = ctx.LoadIngredientBase();
                 for (int i = 0; i < ingredients.Count; i++)
                 {
-                    Console.Write(ingredients[i].IngredientID + "|");
                     Console.Write(ingredients[i].Name + "|");
                     if (ingredients[i] is IAlcholic)
                     {
