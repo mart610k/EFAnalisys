@@ -11,11 +11,11 @@ namespace CocktailEntityFramework.classes
     class Recipe : IRecipe
     {
         [Key]
-        public int RecipeID { get; set; }
-        public string Name { get; set; }
-        public List<IIngredientContent> IngredientContents { get; set; }
+        public int RecipeID { get;private set; }
+        public string Name { get; private set; }
+        public List<IngredientContent> IngredientContents { get; private set; }
 
-        public bool AddIngredientContent(IIngredientContent ingredientContent)
+        public bool AddIngredientContent(IngredientContent ingredientContent)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace CocktailEntityFramework.classes
             }
         }
 
-        public bool AddIngredientContent(IIngredientContent[] ingredientContents)
+        public bool AddIngredientContent(IngredientContent[] ingredientContents)
         {
             try
             {
@@ -43,25 +43,24 @@ namespace CocktailEntityFramework.classes
 
         public bool HaveAlcoholContent()
         {
-            bool haveAlcohol = false;
-            for (int i = 0; i < IngredientContents.Count; i++)
+            if (0 == IngredientContents.Where(s => s.Ingredient is IAlcholic).ToList().Count)
             {
-                if(IngredientContents[i] is IAlcholic)
-                {
-                    haveAlcohol = true;
-                }
+                return false;
             }
-            return haveAlcohol;
+            else
+            {
+                return true;
+            }
         }
         public Recipe()
         {
-            IngredientContents = new List<IIngredientContent>();
+            IngredientContents = new List<IngredientContent>();
         }
 
         public Recipe(string name)
         {
             Name = name;
-            IngredientContents = new List<IIngredientContent>();
+            IngredientContents = new List<IngredientContent>();
         }
     }
 }

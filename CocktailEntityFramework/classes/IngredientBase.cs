@@ -13,8 +13,7 @@ namespace CocktailEntityFramework.classes
     //[Table("IngredientBase")]
     abstract class IngredientBase : Entity, IIngredient
     {
-        
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         protected IngredientBase(string name)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CocktailEntityFramework.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,14 @@ namespace CocktailEntityFramework.interfaces
 {
     interface IRecipe
     {
-        int RecipeID { get; set; }
-        string Name { get; set; }
+        int RecipeID { get; }
+        string Name { get; }
 
-        List<IIngredientContent> IngredientContents { get; set;}
+        List<IngredientContent> IngredientContents { get; }
 
+        bool AddIngredientContent(IngredientContent ingredientContent);
 
-        bool AddIngredientContent(IIngredientContent ingredientContent);
-
-        bool AddIngredientContent(IIngredientContent[] ingredientContents);
+        bool AddIngredientContent(IngredientContent[] ingredientContents);
 
         bool HaveAlcoholContent();
     }

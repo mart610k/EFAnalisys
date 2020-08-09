@@ -9,8 +9,6 @@ namespace CocktailEntityFramework.interfaces
 {
     interface IIngredient
     {
-        [Key]
-        int IngredientID { get; set; }
-        string Name { get; set; }
+        string Name { get;}
     }
 }
